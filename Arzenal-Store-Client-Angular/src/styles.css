@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import url('./assets/fonts/poppins/poppins.css');
+/* Thème clair (par défaut) */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+p-card {
+  --p-card-background: var(--p-zinc-100);
+}
+.error {
+  color: red;
+}
+p-password {
+  color: red;
+  
+}
+
+.error-message {
+  color: red;
+}
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background-color: var(--p-zinc-950)
+  }
+
+
+  p-card {
+    --p-card-background: var(--p-zinc-700) !important;
+  }
+   
+
+
+
+  .error {
+    color: #ff6b6b;
+  }
+  .error-message {
+    color: #ff6b6b;
+  }
+    h1 {
+    color: #ffffff !important;
+  }
+  h2 {
+    color: #ffffff !important;
+  }
+
+}
+

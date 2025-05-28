@@ -1,0 +1,84 @@
+
+/*input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}*/
+
+.error { /* Texte en rouge pour l'erreur */
+  font-size: 12px; /* Taille de police plus petite pour les messages d'erreur */
+  display: block; /* Les messages seront affichés en bloc */
+  margin-top: 5px; /* Espacement au-dessus du message d'erreur */
+  padding: 2px 5px; /* Espacement autour du texte d'erreur */
+  border-radius: 4px; /* Coins arrondis */
+}
+
+
+/* Ajout d'un peu d'espace entre les champs du formulaire */
+.p-field {
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.p-field label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+/* Modifier les bordures des champs de saisie pour les rendre plus modernes 
+input[formControlName] {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+}*/
+
+p-button-label {
+  font-size: 16px;
+  font-weight: 700;
+}
+/* Bordure rouge pour les champs invalides */
+.is-invalid {
+  border-color: red !important;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Ombre rouge autour des champs invalides */
+
+}
+
+
+
+
+  .error ng-container {
+    font-weight: 500; /* Un peu plus de poids sur le texte d'erreur pour le rendre plus visible */
+  }
+
+/* Ajouter un fond de couleur claire aux boutons */
+
+
+p-card {
+  --p-card-background: var(--p-zinc-100);
+  --p-card-shadow: 0 0 3px rgb(128, 128, 128);
+  padding: 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+::ng-deep p-password.is-invalid .p-password-input {
+  border: 1px solid red !important;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+  color: red;
+}
+
+
+
+/* Ajouter un léger effet d'ombre pour rendre le formulaire plus élégant */
+form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+.account-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre horizontalement le contenu */
+}
+
+ p-password .valid {
+  color: green;
+}
+
+ p-password .invalid {
+  color: red;
+}
+
+
+.error ng-container {
+  font-weight: 500; /* Un peu plus de poids sur le texte d'erreur pour le rendre plus visible */
+}
+
+ ::ng-deep p-password.is-invalid .p-password-input {
+  border: 1px solid red !important;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+  color: red;
+}
+
+
+.p-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px; /* Limite pour centrer davantage les lignes */
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+  .p-field label {
+    flex: 1;
+    min-width: 130px;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .p-field span {
+    flex: 2;
+    word-break: break-word;
+    text-align: left;
+  }
+
+  .p-field p-button {
+    flex-shrink: 0;
+  }
+
+.error { /* Texte en rouge pour l'erreur */
+  font-size: 12px; /* Taille de police plus petite pour les messages d'erreur */
+  display: block; /* Les messages seront affichés en bloc */
+  margin-top: -10px; /* Espacement au-dessus du message d'erreur */
+  padding: 2px 5px; /* Espacement autour du texte d'erreur */
+  border-radius: 4px; /* Coins arrondis */
+}

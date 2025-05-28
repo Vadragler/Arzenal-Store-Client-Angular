@@ -1,0 +1,117 @@
+<body>
+  <div *ngIf="loading">Chargement...</div>
+
+  <div class="error-message" *ngIf="!loading && !tokenIsValid && !serverUnavailable">
+    <p>❌ Lien invalide ou expiré.</p>
+  </div>
+  <div class="error-message" *ngIf="serverUnavailable">
+    <p>❌ Serveur indisponible.</p>
+  </div>
+  <div *ngIf="!loading && tokenIsValid">
+    <h1>  {{ title }}</h1>
+  </div>
+  <form *ngIf="!loading && tokenIsValid" [formGroup]="userInscForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="p-field">
+      <p-floatlabel>
+        <input pInputText fluid type="text" id="username" formControlName="username" [class.is-invalid]="isInvalidTouchedOrDirty(userInscForm.controls.username)">
+        <label for="username" [class.input.is-invalid]="isInvalidTouchedOrDirty(userInscForm.controls.username)">Nom d'utilisateur</label>
+      </p-floatlabel>
+        <small class="error" *ngIf="isInvalidTouchedOrDirty(userInscForm.controls.username)">
+          <ng-container *ngIf="userInscForm.controls.username.hasError('required')">
+            Le nom d'utilisateur est requis
+          </ng-container>
+        </small>
+    </div>
+    <div class="p-field">
+      <p-floatlabel>
+        <input pInputText fluid type="email" id="email" formControlName="email" [class.is-invalid-input]="isInvalidTouchedOrDirty(userInscForm.controls.email)">
+        <label for="email"[class.is-invalid]="isInvalidTouchedOrDirty(userInscForm.controls.email)">Email</label>
+      </p-floatlabel>
+          <small class="error" *ngIf="isInvalidTouchedOrDirty(userInscForm.controls.email)">
+            <ng-container *ngIf="userInscForm.controls.email.hasError('required')">
+              L'email est requis
+            </ng-container>
+          </small>
+          <small class="error" *ngIf="isInvalidTouchedOrDirty(userInscForm.controls.email)">
+            <ng-container *ngIf="userInscForm.controls.email.hasError('email')">
+              L'email doit être au format valide
+            </ng-container>
+          </small>
+      </div>
+
+    <div class="p-field">
+      <p-floatlabel>
+        <p-password id="password"
+                    weakLabel="Le mot de passe est faible"
+                    mediumLabel="Le mot de passe est moyen"
+                    strongLabel="Le mot de passe est fort"
+                    formControlName="password"
+                    [class.is-invalid]="isInvalidTouchedOrDirty(userInscForm.controls['password'])"
+                    [class.is-valid]="isValidTouchedOrDirty(userInscForm.controls['password'])"
+                    class="flex-auto"
+                    autocomplete="off"
+                    promptLabel="le mot de passe doit contenir au moins"
+                    [toggleMask]="true"
+                    fluid
+                    [mediumRegex]="mediumRegex"
+                    [strongRegex]="strongRegex">
+          <ng-template #header>
+            <div class="font-semibold text-xm mb-4">Choisis un nouveau mot de passe</div>
+          </ng-template>
+          <ng-template #footer>
+            <p-divider />
+            <ul class="pl-2 ml-2 my-0 leading-normal">
+              <li [ngClass]="passwordCriteria.hasLowerCase ? 'valid' : 'invalid'">
+                une minuscule
+              </li>
+              <li [ngClass]="passwordCriteria.hasUpperCase ? 'valid' : 'invalid'">
+                une majuscule
+              </li>
+              <li [ngClass]="passwordCriteria.hasNumber ? 'valid' : 'invalid'">
+                un chiffre
+              </li>
+              <li [ngClass]="passwordCriteria.hasSymbol ? 'valid' : 'invalid'">
+                un caractère spécial {{ specialCharacter }}
+              </li>
+              <li [ngClass]="passwordCriteria.hasMinLength ? 'valid' : 'invalid'">
+                8 caractères
+              </li>
+            </ul>
+          </ng-template>
+        </p-password>
+        <label for="password"  [class.is-valid]="isValidTouchedOrDirty(userInscForm.controls['password'])" [class.is-invalid]="isInvalidTouchedOrDirty(userInscForm.controls.password)">Mot de passe</label>
+      </p-floatlabel>
+      <small class="error" *ngIf="isInvalidTouchedOrDirty(userInscForm.controls.password)">
+        <ng-container *ngIf="userInscForm.controls.password.hasError('required')">
+          Le mot de passe est requis
+        </ng-container>
+      </small>
+      <small class="error" *ngIf="isInvalidTouchedOrDirty(userInscForm.controls.password)">
+        <ng-container *ngIf="userInscForm.controls.password.hasError('minlength')">
+          Le mot de passe doit être d'au moins 10 caractères
+        </ng-container>
+      </small>
+    </div>
+
+    <div class="p-field">
+      <p-floatlabel>
+        <p-password   fluid type="password" id="confirmpassword" formControlName="confirmpassword" [feedback]="false" [class.is-invalid]="isInvalidTouchedOrDirty(userInscForm.controls.confirmpassword)"/>
+        <label for="confirmpassword" [class.is-invalid]="isInvalidTouchedOrDirty(userInscForm.controls.confirmpassword)">Confirmer le mot de passe</label>
+      </p-floatlabel>
+        <small class="error" *ngIf="isInvalidTouchedOrDirty(userInscForm.controls.confirmpassword)">
+        <ng-container *ngIf="userInscForm.controls.confirmpassword.hasError('required')">
+          La confirmation du mot de passe est requise
+        </ng-container>
+      </small>
+      <small class="error" *ngIf="isInvalidTouchedOrDirty(userInscForm.controls.confirmpassword)">
+        <ng-container *ngIf="userInscForm.controls.confirmpassword.hasError('match')">
+          Le mot de passe doit être identique
+        </ng-container>
+      </small>
+    </div>
+
+    <p-button type="submit">S'inscrire</p-button>
+  </form>
+</body>
