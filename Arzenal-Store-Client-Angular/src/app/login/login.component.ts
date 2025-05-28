@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';  // <-- Assure-toi de bien importer ces modules
-import { CommonModule } from '@angular/common';
+
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { AuthRequestDto } from '../dto/auth-request.dto';
@@ -22,7 +22,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, InputTextModule, ButtonModule, PasswordModule, FloatLabelModule, FluidModule, CardModule, PanelModule], // <-- Assure-toi d'importer les modules nécessaires ici
+  imports: [ReactiveFormsModule, InputTextModule, ButtonModule, PasswordModule, FloatLabelModule, FluidModule, CardModule, PanelModule], // <-- Assure-toi d'importer les modules nécessaires ici
 
 })
 export class LoginComponent {

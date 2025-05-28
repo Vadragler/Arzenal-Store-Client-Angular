@@ -18,8 +18,8 @@
   </div>
   <div class="p-field">
     <p-confirmdialog header="Suppression du profil"
-                     [(visible)]="visibleDeleteProfil"
-                     [style]="{ width: '25rem' }">
+      [(visible)]="visibleDeleteProfil"
+      [style]="{ width: '25rem' }">
 
       Êtes-vous sûr de vouloir supprimer votre compte ?
 
@@ -58,25 +58,27 @@
         <div class="p-field">
           <label for="actualpassword" class="font-semibold w-24">Mot de passe actuelle</label>
           <p-password id="actualpassword" formControlName="actualpassword" [class.is-invalid]="isInvalidTouchedOrDirty(passwordForm.controls['actualpassword'])" class="flex-auto" autocomplete="off" [feedback]="false" [toggleMask]="true" />
-          <small class="error" *ngIf="isInvalidTouchedOrDirty(passwordForm.controls['actualpassword'])">
-            <ng-container *ngIf="passwordForm.controls.actualpassword.hasError('required')">
-              Le mot de passe est requis
-            </ng-container>
-          </small>
+          @if (isInvalidTouchedOrDirty(passwordForm.controls['actualpassword'])) {
+            <small class="error">
+              @if (passwordForm.controls.actualpassword.hasError('required')) {
+                Le mot de passe est requis
+              }
+            </small>
+          }
         </div>
         <div class="p-field">
-          
+
           <label for="password" class="font-semibold w-24">Nouveau mot de passe</label>
           <p-password id="password"
-                      formControlName="password"
-                      [class.is-invalid]="isInvalidTouchedOrDirty(passwordForm.controls['password'])"
-                      class="flex-auto"
-                      autocomplete="off"
-                      promptLabel="le mot de passe doit contenir au moins"
-                      [toggleMask]="true"
-                      fluid
-                      [mediumRegex]="mediumRegex"
-                      [strongRegex]="strongRegex">
+            formControlName="password"
+            [class.is-invalid]="isInvalidTouchedOrDirty(passwordForm.controls['password'])"
+            class="flex-auto"
+            autocomplete="off"
+            promptLabel="le mot de passe doit contenir au moins"
+            [toggleMask]="true"
+            fluid
+            [mediumRegex]="mediumRegex"
+            [strongRegex]="strongRegex">
             <ng-template #header>
               <div class="font-semibold text-xm mb-4">Choisis un nouveau mot de passe</div>
             </ng-template>
@@ -102,36 +104,44 @@
             </ng-template>
 
           </p-password>
-          <small class="error" *ngIf="isInvalidTouchedOrDirty(passwordForm.controls['password'])">
-            <ng-container *ngIf="passwordForm.controls.password.hasError('required')">
-              Le mot de passe est requis
-            </ng-container>
-          </small>
-          <small class="error" *ngIf="isInvalidTouchedOrDirty(passwordForm.controls['password'])">
-            <ng-container *ngIf="passwordForm.controls.password.hasError('minlength')">
-              Le mot de passe doit avoir au moins 10 caractère
-            </ng-container>
-          </small>
+          @if (isInvalidTouchedOrDirty(passwordForm.controls['password'])) {
+            <small class="error">
+              @if (passwordForm.controls.password.hasError('required')) {
+                Le mot de passe est requis
+              }
+            </small>
+          }
+          @if (isInvalidTouchedOrDirty(passwordForm.controls['password'])) {
+            <small class="error">
+              @if (passwordForm.controls.password.hasError('minlength')) {
+                Le mot de passe doit avoir au moins 10 caractère
+              }
+            </small>
+          }
         </div>
         <div class="p-field">
           <label for="confirmpassword" class="font-semibold w-24">Confirmer le mot de passe</label>
           <p-password id="confirmpassword" formControlName="confirmpassword" [class.is-invalid]="isInvalidTouchedOrDirty(passwordForm.controls['confirmpassword'])" class="flex-auto" autocomplete="off" [feedback]="false" [toggleMask]="true"/>
-          <small class="error" *ngIf="isInvalidTouchedOrDirty(passwordForm.controls['confirmpassword'])">
-            <ng-container *ngIf="passwordForm.controls.confirmpassword.hasError('required')">
-              Veuillez confirmer le mot de passe
-            </ng-container>
-          </small>
-          <small class="error" *ngIf="isInvalidTouchedOrDirty(passwordForm.controls['confirmpassword'])">
-            <ng-container *ngIf="passwordForm.controls.confirmpassword.hasError('match')">
-              Le mot de passe doit être identique
-            </ng-container>
-          </small>
+          @if (isInvalidTouchedOrDirty(passwordForm.controls['confirmpassword'])) {
+            <small class="error">
+              @if (passwordForm.controls.confirmpassword.hasError('required')) {
+                Veuillez confirmer le mot de passe
+              }
+            </small>
+          }
+          @if (isInvalidTouchedOrDirty(passwordForm.controls['confirmpassword'])) {
+            <small class="error">
+              @if (passwordForm.controls.confirmpassword.hasError('match')) {
+                Le mot de passe doit être identique
+              }
+            </small>
+          }
         </div>
         <div class="p-field">
           <p-button label="Cancel" severity="secondary" (click)="visibleModifyPassword = false" />
           <p-button label="Save" (click)="ModifyPassword()" />
         </div>
-        </form>
+      </form>
     </p-dialog>
   </div>
 </p-card>
