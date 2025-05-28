@@ -1,6 +1,6 @@
 # Arzenal-Store-Client-Angular
 
-![Angular](https://img.shields.io/badge/Angular-19-red)  
+![Angular](https://img.shields.io/badge/Angular-20-red)  
 ![Node.js](https://img.shields.io/badge/Node.js-22.15.0-green)
 ![NPM](https://img.shields.io/badge/npm-11.3.0-orange)
 ![License](https://img.shields.io/badge/Licence-Utilisation%20interdite-red)
