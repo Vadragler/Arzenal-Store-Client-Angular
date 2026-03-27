@@ -1,0 +1,10 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Arzenal-Store-Client-Angular/copilot-chat/ec8c0c98/sessions
+/.vs/Arzenal-Store-Client-Angular/CopilotIndices/18.4.111.64248
+/.vs/Arzenal-Store-Client-Angular/FileContentIndex
+/.vs/Arzenal-Store-Client-Angular/v18/TestStore/0
+*.suo
+*.json
