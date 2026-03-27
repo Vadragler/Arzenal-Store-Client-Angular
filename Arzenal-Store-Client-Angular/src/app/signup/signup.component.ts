@@ -124,7 +124,7 @@ export class SignupComponent implements OnInit {
       next: (response) => {
         console.log('Réponse du serveur:', response);
               alert('Inscription réussie !');
-              this.router.navigate(['/login']);  // ou la page de ton choix
+              this.router.navigate(['/login']); 
             },
       error: (err) => {
               alert('Erreur inconnue survenue');

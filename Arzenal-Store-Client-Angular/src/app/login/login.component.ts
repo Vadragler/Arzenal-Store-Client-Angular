@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';  // <-- Assure-toi de bien importer ces modules
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -22,7 +22,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule, InputTextModule, ButtonModule, PasswordModule, FloatLabelModule, FluidModule, CardModule, PanelModule], // <-- Assure-toi d'importer les modules nécessaires ici
+  imports: [ReactiveFormsModule, InputTextModule, ButtonModule, PasswordModule, FloatLabelModule, FluidModule, CardModule, PanelModule], 
 
 })
 export class LoginComponent {
@@ -38,14 +38,9 @@ export class LoginComponent {
  
     // Formulaire avec reactive forms
     userForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),  // Validation email
+      email: new FormControl('', [Validators.required, Validators.email]), 
       password: new FormControl('', [Validators.required])
     });
-
-  
-  
-
-  
 
   // Fonction pour vérifier si un contrôle est invalidé et a été touché ou modifié
   isInvalidTouchedOrDirty(userControl: FormControl) {
@@ -66,10 +61,8 @@ export class LoginComponent {
       email: formData.email!,
       password: formData.password!
     };
-    console.log('Login payload:', authRequest); // 👈 debug ici
     this.authService.login(authRequest).subscribe({
-      next: (response: AuthResponse) => {  // Typage de la réponse ici
-        // Stockage du token JWT dans le localStorage (ou autre méthode de ton choix)
+      next: (response: AuthResponse) => {
         this.messageService.add({
           severity: 'success',
           summary: 'Connexion réussie',
@@ -85,11 +78,10 @@ export class LoginComponent {
           console.log('Redirect URI:', redirectUri);
         const redirectToWpfUrl = `${redirectUri}?token=${token}`;
 
-        // Redirige vers l'URL de redirection (ton serveur WPF)
           window.location.href = redirectToWpfUrl;
         });
         // Redirection après connexion
-        //this.router.navigate(['/account']);  // Ajuste la route si nécessaire
+        //this.router.navigate(['/account']);
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 401) {
@@ -106,12 +98,8 @@ export class LoginComponent {
             detail: 'La connexion à échoué, serveur indisponible',
             life: 3000
           })
-        } console.log(error); // 👈 debug ici
-        // Tu peux afficher un message d'erreur dans l'interface utilisateur ici
+        }
       }
     });
   }
-
-
-
 }

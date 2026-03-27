@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthRequestDto } from '../dto/auth-request.dto';
 import { RegisterRequestDto } from '../dto/register-request.dto';
-import { AuthResponse } from '../dto/auth-response.dto';  // Assurez-vous que ce chemin est correct
+import { AuthResponse } from '../dto/auth-response.dto';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { AuthResponse } from '../dto/auth-response.dto';  // Assurez-vous que ce
 export class AuthService {
   
 
-  private apiUrl = 'http://localhost:5181/api/auth';  // Assurez-vous que votre API est sur cette URL
+  private apiUrl = 'http://localhost:5181/api/auth';
 
   constructor(private http: HttpClient) { }
 
